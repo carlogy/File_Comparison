@@ -1,4 +1,4 @@
-from src.parse_json_file import parseJSONFile
+from parse_json_file import parseJSONFile
 import pytest
 
 

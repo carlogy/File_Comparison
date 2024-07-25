@@ -1,4 +1,7 @@
 from compareFile_helper import iterator_helper
+from parse_csv_file import parse_csv
+from parse_json_file import parseJSONFile
+from to_csv import convert_to_csv
 
 def compareFiles(objectA, objectB):
 
@@ -59,13 +62,14 @@ def compareFiles(objectA, objectB):
             return "Unable to compare files."
 
     if mismatched_entities:
-        return "Mismatching entities found between files."
+        convert_to_csv(mismatched_entities);
+        return "Mismatching entities found between files. Check ./results directory for csv file of mismatching entities."
         # return f"Mismatching entities found between files.\nTotal mismatches: {len(mismatched_entities)}"
 
     return "No diffs found between files"
 
 
-# fileA = parseJSONFile("validationFiles/dev/943_dev_asset.json")
-# fileB = parseJSONFile("validationFiles/dev/943_dev_asset copy.json")
+fileA = parseJSONFile("/Users/cyannuzz/Downloads/57419d8b-9ca3-4029-855b-d7fd64d1aa54/asset_pretty.json")
+fileB = parse_csv("/Users/cyannuzz/Downloads/Asset Classification.csv")
 
-# print(compareFiles(objectA=fileA, objectB=fileB))
+print(compareFiles(objectA=fileA, objectB=fileB))
